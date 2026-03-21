@@ -1,0 +1,17 @@
+name: Create Jira ticket for Critical Dependabot alerts
+
+on:
+  schedule:
+    - cron: '0 9 * * 1'   # every Monday 9am
+
+jobs:
+  create-ticket:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create Jira Issue
+        uses: atlassian/gajira-create@v3
+        with:
+          project: SEC                          # your Jira project
+          issuetype: Bug
+          summary: "Critical Dependabot Alert" 
+          description: "Review open Dependabot alerts"
