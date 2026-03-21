@@ -1,0 +1,12 @@
+version: 2                          # syntax version, always 2
+updates:
+  - package-ecosystem: "npm"        # watch package.json
+    directory: "/"                  # found at repo root
+    schedule:
+      interval: "weekly"            # check every week
+    open-pull-requests-limit: 10    # max 10 open PRs at once
+    reviewers:
+      - "your-company/security-team" # auto-assign security team
+    labels:
+      - "security"                  # tag for filtering
+      - "dependencies"              # tag for filtering
