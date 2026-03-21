@@ -1,0 +1,58 @@
+# .github/workflows/dependabot-pagerduty.yml
+
+name: Page on Critical CVE
+
+on:
+  pull_request:
+    types: [opened]
+
+jobs:
+  alert:
+    if: contains(github.event.pull_request.labels.*.name, 'security')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger PagerDuty
+        run: |
+          curl -X POST https://events.pagerduty.com/v2/enqueue \
+          -H "Content-Type: application/json" \
+          -d '{
+            "routing_key": "${{ secrets.PAGERDUTY_KEY }}",
+            "event_action": "trigger",
+            "payload": {
+              "summary": "Critical Dependabot CVE - needs review",
+              "severity": "critical",
+              "source": "GitHub Dependabot"
+            }
+          }'
+```
+
+> Only fires when Dependabot opens a PR **with the `security` label** — that's why labeling matters!
+
+---
+
+## Which to use for what
+
+| Tool | Best for |
+|---|---|
+| **Jira** | Tracking and managing the fix as a ticket |
+| **PagerDuty** | Immediate alert for Critical/High CVEs out of hours |
+| **Both** | PagerDuty pages → team opens Jira ticket → fixes it |
+
+---
+
+## The real workflow with your stack
+```
+Dependabot finds Critical CVE
+          ↓
+Opens PR with label "security"
+          ↓
+GitHub Actions triggers
+    ↓               ↓
+Jira ticket      PagerDuty alert
+created          pages Security Team
+    ↓               ↓
+        Team reviews PR
+          ↓
+        Manual merge ✅
+        ↓
+      Jira ticket closed
