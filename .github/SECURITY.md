@@ -4,24 +4,28 @@
 
 The following versions are currently supported with security updates:
 
-| Version | Supported          |
-| ------- | ------------------ |
-| 1.x     | ✅                 |
-| < 1.0   | ❌                 |
+| Version | Supported |
+| ------- | --------- |
+| 1.x     | ✅        |
+| < 1.0   | ❌        |
 
 ## Reporting a Vulnerability
 
-Please **do not** open a public GitHub issue for security vulnerabilities.
+Please **do not** open a public GitHub issue for security vulnerabilities.  
+This applies to both **private and public repositories**.
 
 ### Internal Employees
 Report directly through our internal channels:
 - 💬 Slack: `#security-incidents`
 - 📧 Email: `security@yourcompany.com`
 
-### Contractors & Third Parties
-Use one of the following:
-- 🔒 GitHub Private Vulnerability Reporting — click **"Report a vulnerability"** in the Security tab
+### Contractors & Third Parties (Private Repos)
+- 💬 Slack: `#security-incidents` (if you have access)
 - 📧 Email: `security@yourcompany.com`
+
+### External Researchers (Public Repos Only)
+- 📧 Email: `security@yourcompany.com`
+- 🔒 GitHub Private Vulnerability Reporting — click **"Report a vulnerability"** in the Security tab
 
 ## What to Include
 
@@ -55,9 +59,10 @@ We follow a **coordinated disclosure** model — please give us time to patch be
 This repository is governed by [Company Name]'s internal Vulnerability Disclosure Policy.
 > 📄 [Link to Vanta/Confluence policy doc]
 
-## Contact
+## When in Doubt
 
-If you are unsure whether something is a vulnerability, **always err on the side of reporting it.**
+If you are unsure whether something is a vulnerability — **always report it.**  
 We would rather investigate and find nothing than miss a real issue.
 
-**Security Team:** `security@yourcompany.com`
+**Security Team:** `security@yourcompany.com`  
+**Slack:** `#security-incidents`
