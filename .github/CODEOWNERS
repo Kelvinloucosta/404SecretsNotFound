@@ -1,0 +1,8 @@
+# .github/CODEOWNERS
+
+# Default owner for everything
+*                    @Kelvinloucosta
+
+# Security files — you must review
+SECURITY.md          @Kelvinloucosta
+.github/             @Kelvinloucosta
